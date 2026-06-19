@@ -40,8 +40,7 @@ const images = [
     },
     {
         src: '/storage/img/4.png',
-        description:
-            'Exemple de tableau de board à l\'usage de décideurs',
+        description: "Exemple de tableau de board à l'usage de décideurs",
     },
     {
         src: '/storage/img/5.png',
@@ -55,49 +54,54 @@ const images = [
 </script>
 
 <template>
-    <div class="flex min-h-screen items-center justify-center bg-gray-800">
-        <div class="flex w-270 flex-none flex-col gap-5">
-            <p class="text-center text-lg text-white">
-                {{ images[currentSlide]?.description }}
-            </p>
-            <Carousel
-                id="gallery"
-                v-bind="galleryConfig"
-                v-model="currentSlide"
-            >
-                <Slide v-for="(image, index) in images" :key="index">
-                    <img
-                        :src="image.src"
-                        alt="Gallery Image"
-                        class="gallery-image"
-                    />
-                </Slide>
-            </Carousel>
+    <div class="flex min-h-screen items-center justify-center bg-[#404040]">
+        <div class="mt-1">
+            <div class="flex w-270 flex-none flex-col gap-5">
+                <p class="text-center text-lg text-white">
+                    {{ images[currentSlide]?.description }}
+                </p>
+                <Carousel
+                    id="gallery"
+                    v-bind="galleryConfig"
+                    v-model="currentSlide"
+                >
+                    <Slide v-for="(image, index) in images" :key="index">
+                        <img
+                            :src="image.src"
+                            alt="Gallery Image"
+                            class="gallery-image"
+                        />
+                    </Slide>
+                </Carousel>
 
-            <Carousel
-                id="thumbnails"
-                v-bind="thumbnailsConfig"
-                v-model="currentSlide"
-            >
-                <Slide v-for="(image, index) in images" :key="index">
-                    <template #default="{ currentIndex, isActive }">
-                        <div
-                            :class="['thumbnail', { 'is-active': isActive }]"
-                            @click="slideTo(currentIndex)"
-                        >
-                            <img
-                                :src="image.src"
-                                alt="Thumbnail Image"
-                                class="thumbnail-image"
-                            />
-                        </div>
+                <Carousel
+                    id="thumbnails"
+                    v-bind="thumbnailsConfig"
+                    v-model="currentSlide"
+                >
+                    <Slide v-for="(image, index) in images" :key="index">
+                        <template #default="{ currentIndex, isActive }">
+                            <div
+                                :class="[
+                                    'thumbnail',
+                                    { 'is-active': isActive },
+                                ]"
+                                @click="slideTo(currentIndex)"
+                            >
+                                <img
+                                    :src="image.src"
+                                    alt="Thumbnail Image"
+                                    class="thumbnail-image"
+                                />
+                            </div>
+                        </template>
+                    </Slide>
+
+                    <template #addons>
+                        <Navigation />
                     </template>
-                </Slide>
-
-                <template #addons>
-                    <Navigation />
-                </template>
-            </Carousel>
+                </Carousel>
+            </div>
         </div>
     </div>
 </template>
@@ -106,8 +110,6 @@ const images = [
 :root {
     background-color: #242424;
 }
-
-
 
 img {
     border-radius: 8px;
