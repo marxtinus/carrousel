@@ -9,10 +9,10 @@ const slideTo = (nextSlide: number) => (currentSlide.value = nextSlide);
 const galleryConfig = {
     itemsToShow: 1,
     wrapAround: true,
-    slideEffect: 'fade',
+
     mouseDrag: false,
     touchDrag: false,
-    height: 620,
+    height: 260,
 };
 const thumbnailsConfig = {
     height: 80,
@@ -56,8 +56,8 @@ const images = [
 <template>
     <div class="flex min-h-screen items-center justify-center bg-[#404040]">
         <div class="mt-1">
-            <div class="flex w-270 flex-none flex-col gap-5">
-                <p class="text-center text-lg text-white">
+            <div class="flex w-120 flex-none flex-col gap-5">
+                <p class="text-center text-lg text-white h-10 mb-4">
                     {{ images[currentSlide]?.description }}
                 </p>
                 <Carousel
